@@ -11,7 +11,20 @@ import java.util.List;
 
 public class Tweet {
 
+    public String getBody() {
+        return body;
+    }
+
     public String body;
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     public String createdAt;
     public User user;
 
