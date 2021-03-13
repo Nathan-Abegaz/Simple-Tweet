@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Headers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 public class ComposeActivity extends AppCompatActivity {
 
@@ -60,6 +62,10 @@ public class ComposeActivity extends AppCompatActivity {
                         try {
                             Tweet tweet = Tweet.fromJson(json.jsonObject);
                             Log.i(TAG, "Published tweet says " + tweet);
+                            Intent intent  = new Intent();
+                            intent.putExtra("tweet", Parcels.wrap(tweet));
+                            setResult(RESULT_OK,intent);
+                            finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
